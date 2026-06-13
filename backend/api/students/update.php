@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Update Student API
  * PUT /api/students/update.php
@@ -125,13 +126,12 @@ try {
         $dob ?: null,
         sanitize($email),
         sanitize($phone),
-        sanitize($address),
+        $address,
         $photo,
         $id
     ]);
 
     jsonResponse(true, 'Student updated successfully!');
-
 } catch (PDOException $e) {
     jsonResponse(false, 'Failed to update student', [], 500);
 }

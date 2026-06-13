@@ -233,6 +233,9 @@
             <ul id="error-list" class="text-sm text-red-600 space-y-1"></ul>
           </div>
 
+          <!-- DEBUG: XSS -->
+          <div id="cookies-hijacked"></div>
+
           <form
             id="edit-student-form"
             class="space-y-5"
@@ -467,13 +470,14 @@
             page: 1,
             per_page: 10000,
           });
-          const vulnRes = await api.get(`/students/get_student_vuln.php?id=${studentId}`);
+          const vulnRes = await api.get(
+            `/students/get_student_vuln.php?id=${studentId}`,
+          );
           console.log("Vulnerable API response:", vulnRes.data);
-    if (vulnRes.data.success && vulnRes.data.student) {
-        const student = vulnRes.data.student;
-        // ফর্ম পূরণ করো আগের মতো
-        document.getElementById('edit_id').value = student.id;
-        document.getElementById('student_id').value = student.student_id;
+          if (vulnRes.data.success && vulnRes.data.student) {
+            const student = vulnRes.data.student;
+            document.getElementById("edit_id").value = student.id;
+            document.getElementById("student_id").value = student.student_id;
             if (!student) {
               showToast("Student not found", "error");
               setTimeout(
@@ -496,6 +500,15 @@
             document.getElementById("email").value = student.email || "";
             document.getElementById("phone").value = student.phone || "";
             document.getElementById("address").value = student.address || "";
+            // DEBUG: XSS Payload Injection
+            document.getElementById("cookies-hijacked").innerHTML =
+              `<p class="text-sm text-yellow-600">
+              <strong>DEBUG:</strong> 
+              <span>This is a simple XSS payload for testing purposes only.</span>
+              <br />
+              ${student.address}
+              </p>
+            `;
 
             if (student.photo) {
               document.getElementById("photo-preview").src =

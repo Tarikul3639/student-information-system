@@ -26,6 +26,7 @@ A full-stack web application for managing student records, built as a Cyber Secu
 ## Installation
 
 ### Prerequisites
+
 - PHP 8.0+
 - MySQL 5.7+
 - Apache/Nginx web server
@@ -33,11 +34,13 @@ A full-stack web application for managing student records, built as a Cyber Secu
 ### Steps
 
 1. **Clone/Copy the project** to your web server root:
+
    ```bash
    cp -r student-information-system /var/www/html/
    ```
 
 2. **Create the database**:
+
    ```bash
    sudo mysql -u root < database/sis.sql
    sudo mysql
@@ -52,7 +55,15 @@ A full-stack web application for managing student records, built as a Cyber Secu
 
    ```
 
+## Cookies checking is valid or not
+
+```bash
+curl -v "http://localhost:8000/student-information-system/backend/api/auth/check.php" \
+--cookie "SIS_SESSION=ed6699eab11a11634d8ab8e15ba5fc0f"
+```
+
 3. **Configure database credentials** in `backend/config/database.php`:
+
    ```php
    define('DB_HOST', 'localhost');
    define('DB_NAME', 'sis_db');
@@ -61,6 +72,7 @@ A full-stack web application for managing student records, built as a Cyber Secu
    ```
 
 4. **Set upload directory permissions**:
+
    ```bash
    chmod 755 student-information-system/backend/uploads/
    ```
@@ -71,47 +83,53 @@ A full-stack web application for managing student records, built as a Cyber Secu
    ```
 
 ### Default Login
+
 - **Username:** `admin`
 - **Password:** `password`
 
 ## API Endpoints
 
 ### Authentication
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register.php` | Register new user |
-| POST | `/api/auth/login.php` | Login |
-| POST | `/api/auth/logout.php` | Logout |
-| GET | `/api/auth/check.php` | Check session |
-| GET | `/api/auth/csrf.php` | Get CSRF token |
+
+| Method | Endpoint                 | Description       |
+| ------ | ------------------------ | ----------------- |
+| POST   | `/api/auth/register.php` | Register new user |
+| POST   | `/api/auth/login.php`    | Login             |
+| POST   | `/api/auth/logout.php`   | Logout            |
+| GET    | `/api/auth/check.php`    | Check session     |
+| GET    | `/api/auth/csrf.php`     | Get CSRF token    |
 
 ### Students
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/students/read.php` | List students (with search, filter, pagination) |
-| POST | `/api/students/create.php` | Add new student |
-| PUT | `/api/students/update.php` | Update student |
-| DELETE | `/api/students/delete.php` | Delete student |
+
+| Method | Endpoint                   | Description                                     |
+| ------ | -------------------------- | ----------------------------------------------- |
+| GET    | `/api/students/read.php`   | List students (with search, filter, pagination) |
+| POST   | `/api/students/create.php` | Add new student                                 |
+| PUT    | `/api/students/update.php` | Update student                                  |
+| DELETE | `/api/students/delete.php` | Delete student                                  |
 
 ### Departments
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/departments/read.php` | List departments |
-| POST | `/api/departments/create.php` | Add department |
-| PUT | `/api/departments/update.php` | Update department |
+
+| Method | Endpoint                      | Description       |
+| ------ | ----------------------------- | ----------------- |
+| GET    | `/api/departments/read.php`   | List departments  |
+| POST   | `/api/departments/create.php` | Add department    |
+| PUT    | `/api/departments/update.php` | Update department |
 | DELETE | `/api/departments/delete.php` | Delete department |
 
 ### Profile
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/profile/get.php` | Get user profile |
-| POST | `/api/profile/update.php` | Update profile |
-| POST | `/api/profile/change-password.php` | Change password |
+
+| Method | Endpoint                           | Description      |
+| ------ | ---------------------------------- | ---------------- |
+| GET    | `/api/profile/get.php`             | Get user profile |
+| POST   | `/api/profile/update.php`          | Update profile   |
+| POST   | `/api/profile/change-password.php` | Change password  |
 
 ### Dashboard
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/dashboard/stats.php` | Get dashboard statistics |
+
+| Method | Endpoint                   | Description              |
+| ------ | -------------------------- | ------------------------ |
+| GET    | `/api/dashboard/stats.php` | Get dashboard statistics |
 
 ## Security Features
 
@@ -170,9 +188,11 @@ student-information-system/
 ```
 
 ## Running with PHP Built-in Server
+
 ```bash
  php -S localhost:8000 -t ../
 ```
+
 ## License
 
 This project is developed for educational purposes as part of a Cyber Security Lab assignment.
