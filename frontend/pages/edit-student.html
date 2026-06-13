@@ -1,200 +1,415 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
     <title>Edit Student – Student Information System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/student-information-system/frontend/assets/css/style.css">
+    <link
+      rel="stylesheet"
+      href="/student-information-system/frontend/assets/css/style.css"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e293b',
-                        accent: '#3b82f6',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e293b",
+              accent: "#3b82f6",
+            },
+          },
+        },
+      };
     </script>
-</head>
-<body class="bg-slate-100">
-
+  </head>
+  <body class="bg-slate-100">
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-primary text-slate-300 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
-        <div class="p-5 border-b border-slate-700">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="text-white font-bold text-sm">SIS</h1>
-                    <p class="text-xs text-slate-400">Cyber Security Lab</p>
-                </div>
-            </div>
+    <aside
+      id="sidebar"
+      class="fixed left-0 top-0 h-full w-64 bg-primary text-slate-300 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300"
+    >
+      <div class="p-5 border-b border-slate-700">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-white font-bold text-sm">SIS</h1>
+            <p class="text-xs text-slate-400">Cyber Security Lab</p>
+          </div>
         </div>
-        <nav class="p-4 space-y-1">
-            <a href="/student-information-system/frontend/pages/dashboard.html" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                Dashboard
-            </a>
-            <a href="/student-information-system/frontend/pages/students.html" class="sidebar-link active flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                Students
-            </a>
-            <a href="/student-information-system/frontend/pages/departments.html" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                Departments
-            </a>
-            <a href="/student-information-system/frontend/pages/profile.html" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                Profile
-            </a>
-        </nav>
-        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-700">
-            <button onclick="logout()" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700 w-full text-left">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
-                Logout
-            </button>
-        </div>
+      </div>
+      <nav class="p-4 space-y-1">
+        <a
+          href="/student-information-system/frontend/pages/dashboard.html"
+          class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            />
+          </svg>
+          Dashboard
+        </a>
+        <a
+          href="/student-information-system/frontend/pages/students.html"
+          class="sidebar-link active flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+          Students
+        </a>
+        <a
+          href="/student-information-system/frontend/pages/departments.html"
+          class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+            />
+          </svg>
+          Departments
+        </a>
+        <a
+          href="/student-information-system/frontend/pages/profile.html"
+          class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            />
+          </svg>
+          Profile
+        </a>
+      </nav>
+      <div
+        class="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-700"
+      >
+        <button
+          onclick="logout()"
+          class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-700 w-full text-left"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+            />
+          </svg>
+          Logout
+        </button>
+      </div>
     </aside>
 
     <!-- Main Content -->
     <main class="lg:ml-64 min-h-screen">
-        <!-- Top Navbar -->
-        <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-30">
-            <div class="flex items-center justify-between px-6 py-3">
-                <div class="flex items-center gap-4">
-                    <button id="sidebar-toggle" class="lg:hidden text-slate-600 hover:text-slate-800">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                    </button>
-                    <a href="/student-information-system/frontend/pages/students.html" class="text-slate-400 hover:text-slate-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                    </a>
-                    <h2 class="text-lg font-semibold text-slate-700">Edit Student</h2>
-                </div>
-                <div class="flex items-center gap-3">
-                    <span id="user-name" class="text-sm text-slate-600 font-medium"></span>
-                    <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-sm font-bold" id="user-avatar"></div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Loading -->
-        <div id="loading" class="flex items-center justify-center py-20">
-            <div class="spinner"></div>
+      <!-- Top Navbar -->
+      <header
+        class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-30"
+      >
+        <div class="flex items-center justify-between px-6 py-3">
+          <div class="flex items-center gap-4">
+            <button
+              id="sidebar-toggle"
+              class="lg:hidden text-slate-600 hover:text-slate-800"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+            <a
+              href="/student-information-system/frontend/pages/students.html"
+              class="text-slate-400 hover:text-slate-600"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </a>
+            <h2 class="text-lg font-semibold text-slate-700">Edit Student</h2>
+          </div>
+          <div class="flex items-center gap-3">
+            <span
+              id="user-name"
+              class="text-sm text-slate-600 font-medium"
+            ></span>
+            <div
+              class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-sm font-bold"
+              id="user-avatar"
+            ></div>
+          </div>
         </div>
+      </header>
 
-        <!-- Form Content -->
-        <div id="form-container" class="hidden p-6 max-w-3xl mx-auto">
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                <!-- Error Container -->
-                <div id="error-container" class="hidden mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                    <ul id="error-list" class="text-sm text-red-600 space-y-1"></ul>
+      <!-- Loading -->
+      <div id="loading" class="flex items-center justify-center py-20">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Form Content -->
+      <div id="form-container" class="hidden p-6 max-w-3xl mx-auto">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+          <!-- Error Container -->
+          <div
+            id="error-container"
+            class="hidden mb-4 p-3 bg-red-50 border border-red-200 rounded-lg"
+          >
+            <ul id="error-list" class="text-sm text-red-600 space-y-1"></ul>
+          </div>
+
+          <form
+            id="edit-student-form"
+            class="space-y-5"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" id="edit_id" />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- Student ID -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Student ID <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="student_id"
+                  required
+                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                />
+              </div>
+
+              <!-- Full Name -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Full Name <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="full_name"
+                  required
+                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                />
+              </div>
+
+              <!-- Department -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Department <span class="text-red-500">*</span></label
+                >
+                <select
+                  id="department_id"
+                  required
+                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                >
+                  <option value="">Select Department</option>
+                </select>
+              </div>
+
+              <!-- Gender -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Gender <span class="text-red-500">*</span></label
+                >
+                <select
+                  id="gender"
+                  required
+                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                >
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Date of Birth -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Date of Birth</label
+                >
+                <input
+                  type="date"
+                  id="dob"
+                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                />
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                />
+              </div>
+
+              <!-- Phone -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Phone</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                />
+              </div>
+
+              <!-- Photo -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1"
+                  >Profile Photo</label
+                >
+                <input
+                  type="file"
+                  id="photo"
+                  accept="image/jpeg,image/jpg,image/png"
+                  class="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:bg-slate-100 file:text-slate-600"
+                />
+                <p class="text-xs text-slate-400 mt-1">
+                  JPG, JPEG, PNG. Max 2MB. Leave empty to keep current.
+                </p>
+                <div id="photo-preview-container" class="hidden mt-2">
+                  <img id="photo-preview" class="photo-preview" alt="Preview" />
                 </div>
-
-                <form id="edit-student-form" class="space-y-5" enctype="multipart/form-data">
-                    <input type="hidden" id="edit_id">
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <!-- Student ID -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Student ID <span class="text-red-500">*</span></label>
-                            <input type="text" id="student_id" required
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none">
-                        </div>
-
-                        <!-- Full Name -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="full_name" required
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none">
-                        </div>
-
-                        <!-- Department -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Department <span class="text-red-500">*</span></label>
-                            <select id="department_id" required
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none">
-                                <option value="">Select Department</option>
-                            </select>
-                        </div>
-
-                        <!-- Gender -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Gender <span class="text-red-500">*</span></label>
-                            <select id="gender" required
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-
-                        <!-- Date of Birth -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Date of Birth</label>
-                            <input type="date" id="dob"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none">
-                        </div>
-
-                        <!-- Email -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                            <input type="email" id="email"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none">
-                        </div>
-
-                        <!-- Phone -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Phone</label>
-                            <input type="tel" id="phone"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none">
-                        </div>
-
-                        <!-- Photo -->
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Profile Photo</label>
-                            <input type="file" id="photo" accept="image/jpeg,image/jpg,image/png"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:bg-slate-100 file:text-slate-600">
-                            <p class="text-xs text-slate-400 mt-1">JPG, JPEG, PNG. Max 2MB. Leave empty to keep current.</p>
-                            <div id="photo-preview-container" class="hidden mt-2">
-                                <img id="photo-preview" class="photo-preview" alt="Preview">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Address -->
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Address</label>
-                        <textarea id="address" rows="3"
-                            class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"></textarea>
-                    </div>
-
-                    <!-- Buttons -->
-                    <div class="flex items-center gap-3 pt-4">
-                        <button type="submit" id="submit-btn"
-                            class="px-6 py-2.5 bg-primary text-white rounded-lg font-medium hover:bg-slate-800 flex items-center gap-2">
-                            <span>Update Student</span>
-                            <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                            </svg>
-                        </button>
-                        <a href="/student-information-system/frontend/pages/students.html" class="px-6 py-2.5 border border-slate-300 rounded-lg font-medium text-slate-600 hover:bg-slate-50">Cancel</a>
-                    </div>
-                </form>
+              </div>
             </div>
+
+            <!-- Address -->
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1"
+                >Address</label
+              >
+              <textarea
+                id="address"
+                rows="3"
+                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+              ></textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex items-center gap-3 pt-4">
+              <button
+                type="submit"
+                id="submit-btn"
+                class="px-6 py-2.5 bg-primary text-white rounded-lg font-medium hover:bg-slate-800 flex items-center gap-2"
+              >
+                <span>Update Student</span>
+                <svg
+                  id="submit-spinner"
+                  class="hidden w-5 h-5 animate-spin"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  ></path>
+                </svg>
+              </button>
+              <a
+                href="/student-information-system/frontend/pages/students.html"
+                class="px-6 py-2.5 border border-slate-300 rounded-lg font-medium text-slate-600 hover:bg-slate-50"
+                >Cancel</a
+              >
+            </div>
+          </form>
         </div>
+      </div>
     </main>
 
     <!-- Mobile Sidebar Overlay -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+    <div
+      id="sidebar-overlay"
+      class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"
+    ></div>
 
     <!-- Toast Container -->
     <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
@@ -203,147 +418,196 @@
     <script src="/student-information-system/frontend/assets/js/axios-config.js"></script>
     <script src="/student-information-system/frontend/assets/js/auth.js"></script>
     <script>
-        requireAuth();
-        updateUserUI();
+      requireAuth();
+      updateUserUI();
 
-        // Sidebar toggle
-        document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
-            document.getElementById('sidebar').classList.toggle('-translate-x-full');
-            document.getElementById('sidebar-overlay').classList.toggle('hidden');
+      // Sidebar toggle
+      document
+        .getElementById("sidebar-toggle")
+        ?.addEventListener("click", () => {
+          document
+            .getElementById("sidebar")
+            .classList.toggle("-translate-x-full");
+          document.getElementById("sidebar-overlay").classList.toggle("hidden");
         });
-        document.getElementById('sidebar-overlay')?.addEventListener('click', () => {
-            document.getElementById('sidebar').classList.add('-translate-x-full');
-            document.getElementById('sidebar-overlay').classList.add('hidden');
+      document
+        .getElementById("sidebar-overlay")
+        ?.addEventListener("click", () => {
+          document.getElementById("sidebar").classList.add("-translate-x-full");
+          document.getElementById("sidebar-overlay").classList.add("hidden");
         });
 
-        // Get student ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const studentId = urlParams.get('id');
+      // Get student ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const studentId = urlParams.get("id");
 
-        if (!studentId) {
-            window.location.href = '/student-information-system/frontend/pages/students.html';
+      if (!studentId) {
+        window.location.href =
+          "/student-information-system/frontend/pages/students.html";
+      }
+
+      // Load departments and student data
+      (async function () {
+        try {
+          // Load departments
+          const deptRes = await api.get("/departments/read.php");
+          if (deptRes.data.status) {
+            const select = document.getElementById("department_id");
+            deptRes.data.departments.forEach((d) => {
+              const opt = document.createElement("option");
+              opt.value = d.id;
+              opt.textContent = d.department_name;
+              select.appendChild(opt);
+            });
+          }
+
+          // Load student data
+          const params = new URLSearchParams({
+            search: "",
+            page: 1,
+            per_page: 10000,
+          });
+          const vulnRes = await api.get(`/students/get_student_vuln.php?id=${studentId}`);
+          console.log("Vulnerable API response:", vulnRes.data);
+    if (vulnRes.data.success && vulnRes.data.student) {
+        const student = vulnRes.data.student;
+        // ফর্ম পূরণ করো আগের মতো
+        document.getElementById('edit_id').value = student.id;
+        document.getElementById('student_id').value = student.student_id;
+            if (!student) {
+              showToast("Student not found", "error");
+              setTimeout(
+                () =>
+                  (window.location.href =
+                    "/student-information-system/frontend/pages/students.html"),
+                1500,
+              );
+              return;
+            }
+
+            // Fill form
+            document.getElementById("edit_id").value = student.id;
+            document.getElementById("student_id").value = student.student_id;
+            document.getElementById("full_name").value = student.full_name;
+            document.getElementById("department_id").value =
+              student.department_id || "";
+            document.getElementById("gender").value = student.gender;
+            document.getElementById("dob").value = student.dob || "";
+            document.getElementById("email").value = student.email || "";
+            document.getElementById("phone").value = student.phone || "";
+            document.getElementById("address").value = student.address || "";
+
+            if (student.photo) {
+              document.getElementById("photo-preview").src =
+                "/student-information-system/backend/uploads/" + student.photo;
+              document
+                .getElementById("photo-preview-container")
+                .classList.remove("hidden");
+            }
+
+            document.getElementById("loading").classList.add("hidden");
+            document
+              .getElementById("form-container")
+              .classList.remove("hidden");
+          }
+        } catch (e) {
+          console.error("Load error:", e);
+          showToast("Failed to load student data", "error");
         }
+      })();
 
-        // Load departments and student data
-        (async function() {
-            try {
-                // Load departments
-                const deptRes = await api.get('/departments/read.php');
-                if (deptRes.data.status) {
-                    const select = document.getElementById('department_id');
-                    deptRes.data.departments.forEach(d => {
-                        const opt = document.createElement('option');
-                        opt.value = d.id;
-                        opt.textContent = d.department_name;
-                        select.appendChild(opt);
-                    });
-                }
+      // Photo preview
+      document.getElementById("photo").addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("photo-preview").src = e.target.result;
+            document
+              .getElementById("photo-preview-container")
+              .classList.remove("hidden");
+          };
+          reader.readAsDataURL(file);
+        }
+      });
 
-                // Load student data
-                const params = new URLSearchParams({ search: '', page: 1, per_page: 10000 });
-                const stuRes = await api.get(`/students/read.php?${params}`);
-                if (stuRes.data.status) {
-                    const student = stuRes.data.students.find(s => s.id == studentId);
-                    if (!student) {
-                        showToast('Student not found', 'error');
-                        setTimeout(() => window.location.href = '/student-information-system/frontend/pages/students.html', 1500);
-                        return;
-                    }
+      // Form submit
+      document
+        .getElementById("edit-student-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          hideErrors();
 
-                    // Fill form
-                    document.getElementById('edit_id').value = student.id;
-                    document.getElementById('student_id').value = student.student_id;
-                    document.getElementById('full_name').value = student.full_name;
-                    document.getElementById('department_id').value = student.department_id || '';
-                    document.getElementById('gender').value = student.gender;
-                    document.getElementById('dob').value = student.dob || '';
-                    document.getElementById('email').value = student.email || '';
-                    document.getElementById('phone').value = student.phone || '';
-                    document.getElementById('address').value = student.address || '';
+          const formData = new FormData();
+          formData.append("id", document.getElementById("edit_id").value);
+          formData.append(
+            "student_id",
+            document.getElementById("student_id").value.trim(),
+          );
+          formData.append(
+            "full_name",
+            document.getElementById("full_name").value.trim(),
+          );
+          formData.append(
+            "department_id",
+            document.getElementById("department_id").value,
+          );
+          formData.append("gender", document.getElementById("gender").value);
+          formData.append("dob", document.getElementById("dob").value);
+          formData.append(
+            "email",
+            document.getElementById("email").value.trim(),
+          );
+          formData.append(
+            "phone",
+            document.getElementById("phone").value.trim(),
+          );
+          formData.append(
+            "address",
+            document.getElementById("address").value.trim(),
+          );
 
-                    if (student.photo) {
-                        document.getElementById('photo-preview').src = '/student-information-system/backend/uploads/' + student.photo;
-                        document.getElementById('photo-preview-container').classList.remove('hidden');
-                    }
+          const photoFile = document.getElementById("photo").files[0];
+          if (photoFile) {
+            formData.append("photo", photoFile);
+          }
 
-                    document.getElementById('loading').classList.add('hidden');
-                    document.getElementById('form-container').classList.remove('hidden');
-                }
-            } catch (e) {
-                console.error('Load error:', e);
-                showToast('Failed to load student data', 'error');
+          const btn = document.getElementById("submit-btn");
+          const spinner = document.getElementById("submit-spinner");
+          btn.disabled = true;
+          btn.querySelector("span").textContent = "Updating...";
+          spinner.classList.remove("hidden");
+
+          try {
+            const csrfToken = localStorage.getItem("csrf_token");
+            const response = await api.post("/students/update.php", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                "X-CSRF-Token": csrfToken,
+              },
+            });
+
+            if (response.data.status) {
+              showToast("Student updated successfully!", "success");
+              setTimeout(() => {
+                window.location.href =
+                  "/student-information-system/frontend/pages/students.html";
+              }, 1000);
             }
-        })();
+          } catch (error) {
+            btn.disabled = false;
+            btn.querySelector("span").textContent = "Update Student";
+            spinner.classList.add("hidden");
 
-        // Photo preview
-        document.getElementById('photo').addEventListener('change', function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('photo-preview').src = e.target.result;
-                    document.getElementById('photo-preview-container').classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
+            if (error.response && error.response.data) {
+              const data = error.response.data;
+              if (data.errors) showErrors(data.errors);
+              else showErrors([data.message || "Failed to update student"]);
+            } else {
+              showErrors(["Network error. Please try again."]);
             }
-        });
-
-        // Form submit
-        document.getElementById('edit-student-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            hideErrors();
-
-            const formData = new FormData();
-            formData.append('id', document.getElementById('edit_id').value);
-            formData.append('student_id', document.getElementById('student_id').value.trim());
-            formData.append('full_name', document.getElementById('full_name').value.trim());
-            formData.append('department_id', document.getElementById('department_id').value);
-            formData.append('gender', document.getElementById('gender').value);
-            formData.append('dob', document.getElementById('dob').value);
-            formData.append('email', document.getElementById('email').value.trim());
-            formData.append('phone', document.getElementById('phone').value.trim());
-            formData.append('address', document.getElementById('address').value.trim());
-
-            const photoFile = document.getElementById('photo').files[0];
-            if (photoFile) {
-                formData.append('photo', photoFile);
-            }
-
-            const btn = document.getElementById('submit-btn');
-            const spinner = document.getElementById('submit-spinner');
-            btn.disabled = true;
-            btn.querySelector('span').textContent = 'Updating...';
-            spinner.classList.remove('hidden');
-
-            try {
-                const csrfToken = localStorage.getItem('csrf_token');
-                const response = await api.post('/students/update.php', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'X-CSRF-Token': csrfToken
-                    }
-                });
-
-                if (response.data.status) {
-                    showToast('Student updated successfully!', 'success');
-                    setTimeout(() => {
-                        window.location.href = '/student-information-system/frontend/pages/students.html';
-                    }, 1000);
-                }
-            } catch (error) {
-                btn.disabled = false;
-                btn.querySelector('span').textContent = 'Update Student';
-                spinner.classList.add('hidden');
-
-                if (error.response && error.response.data) {
-                    const data = error.response.data;
-                    if (data.errors) showErrors(data.errors);
-                    else showErrors([data.message || 'Failed to update student']);
-                } else {
-                    showErrors(['Network error. Please try again.']);
-                }
-            }
+          }
         });
     </script>
-</body>
+  </body>
 </html>
